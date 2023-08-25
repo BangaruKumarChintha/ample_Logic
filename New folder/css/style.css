@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+.navbar .navbar-brand img {
+  width: 220px;
+}
+.navbar .navbar-nav .nav-item .nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+.navbar .navbar-nav .nav-item .nav-link span {
+  background-color: #1e88e5;
+  color: #fff;
+  padding: 3px 3px;
+  border-radius: 8px;
+  margin-right: 8px;
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+.navbar .nav-right li {
+  list-style: none;
+}
+.navbar .nav-right .flag img {
+  width: 20px;
+}
+.navbar .nav-right .notification a {
+  color: gray;
+  margin: 0px 22px;
+  font-size: 23px;
+  text-decoration: none;
+}
+.navbar .nav-right .profile img {
+  width: 45px;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  padding: 2px;
+}
+main {
+  height: 82vh;
+}
+.offcanvas1 {
+  display: none;
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+  transition: top 0.5s ease-in-out;
+  z-index: 9999;
+  width: 100%;
+  height: 100px;
+  left: 0;
+  border-top: 1px solid #dee2e6;
+}
+.close {
+  bottom: -100px;
+  transition: top 0.5s ease-in-out;
+}
+.offcanvas1 .close-btn {
+  background-color: #1e88e5;
+  color: #fff;
+  width: 55px;
+  position: absolute;
+  right: 50px;
+  font-size: 18px;
+  top: -30px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border: none;
+}
+.offcanvas1 .box {
+  background-color: #1e88e5;
+  color: #fff;
+  height: 100px;
+  position: relative;
+}
+.offcanvas1 .box::before {
+  content: "";
+  border-left: 15px solid #1e88e5;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  right: -14px;
+  position: absolute;
+}
+.offcanvas1 .box i {
+  font-size: 50px;
+  rotate: -44deg;
+  margin-top: 15px;
+}
+.progressBar {
+  position: relative;
+  width: 0%;
+  height: 10px;
+  background-color: #1e88e5;
+  border-radius: 15px;
+}
+

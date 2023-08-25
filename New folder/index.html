@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmpleLogic</title>
+    <meta name="title" content="AmpleLogic" />
+    <meta name="description" content="AmpleLogic" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link href="css/all.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/jquery.toast.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/93d2a1e4fa.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/jquery.toast.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand me-5" href="#"><img src='./assets/images/amplelogic_logo_Black.png' class="img-fluid" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            <span><i class="fa-solid fa-user-check"></i></span>Organization Structure
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                            Configurations
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            <span><i class="fa-solid fa-copy"></i></span>Reports
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            <span><i class="fa-solid fa-gears"></i></span>ETL
+                        </a>
+                    </li>
+                </ul>
+                <ul class="d-flex align-items-center mb-0 ps-0 nav-right">
+                    <li class="flag">
+                        <a href="#"><img src="assets/images/usa.png" /></a>
+                    </li>
+                    <li class="notification">
+                        <a href="#">
+                            <i class="fa-regular fa-bell"></i>
+                        </a>
+                    </li>
+                    <li class="profile">
+                        <a href="#"><img src="assets/images/man.png" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container h-100">
+            <div class="row align-items-center justify-content-between h-100 text-center">
+                <div class="col-lg-12">
+                    <button id="startButton" class="btn btn-primary px-5 py-2">
+                        Start
+                    </button>
+                    <div id="offcanvas1" class="offcanvas1">
+                        <button onclick="closeBtn()" class="close-btn">
+                            <i class="fa-solid fa-sort-down"></i>
+                        </button>
+                        <div class="container-fluid ps-0">
+                            <div class="row align-items-center">
+                                <div class="col-md-1">
+                                    <div
+                                    class="box d-flex align-items-center justify-content-center"
+                                    >
+                                    <i class="fa-sharp fa-solid fa-rocket"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-11">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-start mb-3">
+                                            Migrating Data to Selected environment
+                                        </p>
+                                        <span id="progressPercentage">0%</span>
+                                    </div>
+
+                                    <div id="progressBar" class="progressBar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-top py-3">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-4">
+                <img src="assets/images/amplelogic_logo_Black.png" class="img-fluid" width="160" />
+            </div>
+            <div class="col-lg-4">
+                <p class="text-center mb-0 text-black-50">
+                    Copyrights
+                <i class="fa-sharp fa-light fa-copyright"></i> 2010-2023
+                    AmpleLogic | All Right Reserved
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <p class="text-end mb-0 text-black-50">v3.1.0</p>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const startButton = document.getElementById("startButton");
+        const offcanvas = document.getElementById("offcanvas1");
+        const progressBar = document.getElementById("progressBar");
+        const progressPercentage = document.getElementById("progressPercentage");
+  
+        startButton.addEventListener("click", () => {
+          startButton.style.display = "none";
+          progressBar.style.width = "0%";
+          progressPercentage.textContent = "0%";
+          offcanvas.style.display = "block";
+          let progress = 0;
+          const interval = setInterval(() => {
+            progress += 1;
+            progressBar.style.width = `${progress}%`;
+            progressPercentage.textContent = `${progress}%`;
+            if (progress >= 100) {
+              clearInterval(interval);
+              offcanvas.style.display = "none";
+              startButton.style.display = "inline-block";
+              showToast();
+            }
+          }, 30);
+        });
+  
+        function showToast(message) {
+          $.toast({
+            heading: "Success",
+            text: "Migration applied successfully",
+            showHideTransition: "slide",
+            icon: "success",
+            position: "bottom-right",
+          });
+        }
+        function closeBtn() {
+          var element = document.getElementById("offcanvas1");
+          element.classList.toggle("close");
+        }
+    </script>
+
+</body>
+</html>
+
